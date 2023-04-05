@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "eslint": "8.37.0",
     "@reduxjs/toolkit": "^1.9.2",
     "@sumsub/websdk": "^1.3.7",
     "@sumsub/websdk-react": "^1.3.7",
