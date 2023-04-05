@@ -124,7 +124,7 @@ const SignupPage = () => {
                   value={userData.cPassword}
                   onChange={inputChangeHandler}
                 />
-                <div>
+                {/* <div>
                   <AiFillEyeInvisible
                     className={
                       showPassword2 == true ? `hidden` : `block text-2xl`
@@ -137,7 +137,7 @@ const SignupPage = () => {
                     }
                     onClick={changePasswordType2}
                   />
-                </div>
+                </div> */}
               </div>
             </div>
             <button className="border-4 w-1/2 self-center rounded-2xl h-10 bg-lime-600 text-white" onClick={() => registerHandler()}>
