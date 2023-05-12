@@ -27,7 +27,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="hidden md:flex  pl-4 pr-2 pt-5  flex-col justify-start  w-1/5 h-screen gap-y-5  bg-black sticky top-0">
+    <div className="hidden md:flex  pl-4 pr-2 pt-5  flex-col justify-start  w-1/5 h-screen gap-y-5  bg-sidebarBakground sticky top-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-slate-400">
       {/* app name */}
       <h1 className="text-3xl text-white hover:cursor-pointer">Sipto</h1>
 
@@ -134,17 +134,17 @@ const Sidebar = () => {
           {/* <AiOutlineGold className="text-xl" /> */}
           <h1 className="text-xl">Kyc</h1>
         </div>
-        <div
+        {/* <div
           className={
             router.pathname == "/RazorPay"
               ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
               : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
           }
           onClick={() => router.push("/RazorPay")}
-        >
+        > */}
           {/* <AiOutlineGold className="text-xl" /> */}
-          <h1 className="text-xl">RazorPay</h1>
-        </div>
+          {/* <h1 className="text-xl">RazorPay</h1>
+        </div> */}
         <div
           className={
             router.pathname == "/AugmontGold"
@@ -156,8 +156,43 @@ const Sidebar = () => {
           {/* <AiOutlineGold className="text-xl" /> */}
           <h1 className="text-xl">AugmontGold</h1>
         </div>
+        {/* <div
+          className={
+            router.pathname == "/OpenApi"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/OpenApi")}
+        > */}
+          {/* <AiOutlineGold className="text-xl" /> */}
+          {/* <h1 className="text-xl">OpenApi</h1>
+        </div> */}
+        {/* <div
+          className={
+            router.pathname == "/MemoryLangchain"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/MemoryLangchain")}
+        > */}
+          {/* <AiOutlineGold className="text-xl" /> */}
+          {/* <h1 className="text-xl">MemoryLangchain</h1>
+        </div> */}
         <div
-          className={"text-white hover:cursor-pointer p-1 flex items-center gap-x-2"}
+          className={
+            router.pathname == "/Pinecone"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/Pinecone")}
+        >
+          {/* <AiOutlineGold className="text-xl" /> */}
+          <h1 className="text-xl">Chat Bot</h1>
+        </div>
+        <div
+          className={
+            "text-white hover:cursor-pointer p-1 flex items-center gap-x-2 mb-6"
+          }
           onClick={() => logoutHandler()}
         >
           {/* <FiLogOut  /> */}

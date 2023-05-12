@@ -45,7 +45,8 @@ const LoginPage = () => {
   
       if (submitResponse.data.session) {
         // return "success"
-        router.push("/Dashboard");
+        // router.push("/Dashboard");
+        router.push("/Pinecone");
       }
     } catch (err) {
       console.log(err);

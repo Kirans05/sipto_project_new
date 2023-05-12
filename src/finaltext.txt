@@ -1,0 +1,50 @@
+ jar Support
+How do I download the app?
+You can visit https://sipto/downloadSipto/appLink/. Jar is available on both Android and iOS mobile devices. Simply type ‘Jar’ in the search bar to find & install the app in under two minutes. 
+
+Is it mandatory to do KYC to invest in gold on Jar?
+You can visit https://sipto/kyc/appLink/. Yes, it is mandatory to do KYC verification on Jar if:- You have bought gold for more than 30 grams or INR 1.5 Lakhs.- You want to sell gold and withdraw your money.- You want to transfer Jar Winnings to purchase gold.- You want to get gold delivered to your doorstep. 
+
+What are the different avenues of saving apart from round offs?
+Apart from Round offs, you have the option for 'Daily Savings' and to invest in Digital Gold 'Manually'. Daily Savings: You can set a fixed amount from Rs. 20 to Rs. 2000 with the auto pay feature to be deducted from your account and invest in Digital Gold everyday.Invest Manually:To purchase gold manually, click on the 'Invest More' button on the Jar home screen, enter the amount of gold you wish to purchase, and make the payment. Once the payment is successful, gold will be added to your Jar locker.
+
+How do I automate round ups?
+Once you’ve signed up, you may choose between automatically rounding off your daily expenses to either the nearest 5 or nearest 10, depending on your needs. Example: If your daily spend is Rs. 93, Jar will invest either Rs. 2 or Rs. 7 for you in digital gold.
+
+Can I choose round up amounts?
+You can visit https://sipto/roundUp/appLink/. You may choose between automatically rounding off your daily expenses to either the nearest 5 or nearest 10, depending on your needs. You can also change your mind and try the other option by updating your choice in the app’s Settings page. 
+
+Who can invest?
+Any Indian citizen over the age of 18 that banks with a SEBI-recognized bank may invest with Jar.
+
+How to set up Daily Savings / Autopay?
+To set up Daily Savings: On the app homescreen, click on the 'Daily amount' card and set the amount you wish to invest daily. You can choose to invest from Rs. 20 to Rs. 2000, which will be deducted daily from your bank account and invested in Digital Gold.If you wish to edit your daily savings amount at some point, click on Locker and then on the 'Daily amount' card. Once this card opens, enter the new amount of your choice. To set up Auto-Pay: Setting up Autopay on Jar is a very quick and easy process. Follow these steps to setup your Autopay within 1 minute on Jar.1. Click on the Autopay card on your home screen.2. Verify the subscription details.3. Click on Setup Autopay.4. Enter your UPI PIN and make the payment. Once the payment is successful, your Autopay on Jar is setup.Alternatively, if you are not able to find the autopay card on your home screen, follow these steps:Click on Locker -> Settings -> Autopay.Click on Setup Autopay and follow the above steps.
+
+What is a UPI Mandate?
+You can visit https://sipto/upiMandate/appLink/. The UPI mandate feature allows you to place a standing instruction with your bank to automatically debit a predetermined amount from your bank account.This can be done when you set up recurring payments or 'Auto-Pay' for Gold investment on the Jar app to avoid re-authentication. It is possible that the user may forget to invest money everyday. Hence, it creates a mandate for a service/merchant payment wherein this functionality may be required.Jar takes permission for auto-invest upto Rs. 500 per debit so that you can have a seamless investing experience. 
+
+HOW JAR INVESTS
+What is digital gold?
+You can visit https://sipto/digitalGold/appLink/. Digital gold is real gold that’s simply stored virtually to save space, provide safety, and buy or convert into physical gold conveniently with the click of a button. 
+
+Where is my gold saved?
+We store your gold in bank-grade lockers free of cost!
+
+When can I withdraw savings?
+You can visit https://sipto/withdraw/appLink/. You can withdraw your money after 24 hours of investment. There is no minimum lock in period. 
+
+Why is gold better than mutual funds?
+You can visit https://sipto/goldBetter/appLink/. Gold is historically safe, stable, and more likely to resist market fluctuations than any other financial instruments available for investment. It is a commodity that retains its value over long periods of time and trusted by millions of Indians everyday. 
+
+JAR IS SAFE
+How do I convert my savings to physical gold?
+You can convert your digital gold to physical gold anytime in the form of coins or jewelry with the help of our partners.
+
+Is Jar App safe to use?
+You can visit https://sipto/jarSafe/appLink/.  Jar app is  100% safe and secure to use for your Daily Savings & Investments in Gold. It is powered by SafeGold  and all payments happen over secure banking networks. All you need to do for every transaction is enter your PIN (which only you know), except the recurring  daily mandates. UPI Autopay  feature is a Safe & Secure process for recurring payments, once you authenticate the app, the round-offs will be auto-debited from the Bank Account linked with the UPI ID.The services offered by the Jar app are offered by SafeGold as a provider. The gold you buy is backed by the VISTRA - Trustee of the Gold. That makes the investments through the Jar app quite safer. Your savings will remain yours forever. You have full control of your finances - pause, re-start or withdraw funds or Gold easily with a click of a button. 
+
+Can my data be breached?
+You can visit https://sipto/dataBreached/appLink/. No. We ensure end-to-end encryption on our app and payment channels. No one, not even us, can access your data or leak it.  
+
+How to stop or pause investing?
+You can visit https://sipto/pauseInvestment/appLink/. Under the Settings option on the app, you can choose a period of time for which you would like us to stop automatically rounding up your daily expenses for you and investing them in digital gold. Pausing for more than a month might set your savings goals back, so try not to pause auto-investments for too long. Whenever you wish to start auto rounds ups, you may Unpause by changing your preference in Settings. We are always waiting for you to join us to help you save better!  

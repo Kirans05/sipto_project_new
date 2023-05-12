@@ -8,7 +8,7 @@ const index = () => {
     if (localStorage.getItem("sb-ziaxsvytbaahgjrompdd-auth-token") == null) {
       router.push("/LoginPage");
     } else {
-      router.push("/Dashboard");
+      router.push("/Pinecone");
     }
   }, []);
   return (
