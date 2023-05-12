@@ -69,8 +69,8 @@ export async function getServerSideProps(context) {
   let inputData = context.query.inputData;
   try {
     let embed = new OpenAIEmbeddings({
-      openAIApiKey: "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",
-      // openAIApiKey: "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",
+      // openAIApiKey: "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",
+      openAIApiKey: "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",
     });
     let embedding = await embed.embedQuery(inputData);
 
@@ -95,8 +95,8 @@ export async function getServerSideProps(context) {
     }
     try {
       const configuration = new Configuration({
-        apiKey: "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",
-        // apiKey: "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",
+        // apiKey: "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",
+        apiKey: "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",
       });
       const openai = new OpenAIApi(configuration);
 
