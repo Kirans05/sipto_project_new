@@ -15,7 +15,7 @@ const Pinecone = () => {
     btns: [],
     btnShowm: "",
   });
-  const [reRender, setReRender] = useState(true)
+  const [reRender, setReRender] = useState(true);
 
   const getResult = async (question) => {
     setinputValue({
@@ -75,8 +75,7 @@ const Pinecone = () => {
             btns: obj.btns,
             btnShowm: "stop generating",
           });
-          setReRender(!reRender)
-
+          setReRender(!reRender);
         }
       }
     } catch (err) {
@@ -104,24 +103,18 @@ const Pinecone = () => {
     }
   };
 
-
+  useEffect(() => {
+    if (inputValue.value == "" && inputValue.prevQtn.length >= 1) {
+      localStorage.setItem("chatHistory", JSON.stringify(inputValue));
+    }
+  }, [reRender]);
 
   useEffect(() => {
-    if(inputValue.value == "" && inputValue.prevQtn.length >= 1){
-      localStorage.setItem("chatHistory", JSON.stringify(inputValue))
+    if (localStorage.getItem("chatHistory") == null) {
+    } else if (localStorage.getItem("chatHistory") != null) {
+      setinputValue(JSON.parse(localStorage.getItem("chatHistory")));
     }
-  },[reRender])
-
-
-  useEffect(() => {
-    if(localStorage.getItem("chatHistory") == null){
-
-    }else if(localStorage.getItem("chatHistory") != null){
-      setinputValue(JSON.parse(localStorage.getItem("chatHistory")))
-    }
-  },[])
-
-
+  }, []);
 
   return (
     <div className="w-full flex flex-row">
@@ -150,17 +143,46 @@ const Pinecone = () => {
               Reset
             </button>
           </div>
-          <h1 className="py-5 px-6 md:px-52 text-white w-full">
-            {inputValue.prevQtn}
-          </h1>
-          {inputValue.answer == "" ? null : (
-            <Typewriter
-              text={inputValue.answer}
-              delay={10}
-              buttonsArray={inputValue.btns}
-              changeBtnStatus={changeBtnStatus}
-            />
-          )}
+          <div className="text-white fixed flex flex-row px-10 py-4 bottom-20 md:bottom-24 self-center w-full md:w-3/4 justify-between md:justify-evenly">
+            <h1
+              className="hover:cursor-pointer hover:underline"
+              onClick={() => getResult("How do I invest in gold?")}
+            >
+              How do I invest in gold?
+            </h1>
+            <h1
+              className="hover:cursor-pointer hover:underline"
+              onClick={() => getResult("How do I add funds?")}
+            >
+              How do I add funds?
+            </h1>
+            <h1
+              className="hover:cursor-pointer hover:underline"
+              onClick={() => getResult("Why should I do KYC?")}
+            >
+              Why should I do KYC?
+            </h1>
+          </div>
+          <div className="h-3/4 md:h-auto overflow-y-auto">
+            <h1 className="py-5 px-6 md:px-52 text-white w-full text-xl">
+              Sipto Chatbot
+            </h1>
+            <h1 className="py-5 px-6 md:px-52 text-white w-full -mt-6 text-sm">
+              Hi! I am Sipto Chatbot, you can asking me anything about investing
+              and savings! I am here to solve all your investment doubts
+            </h1>
+            <h1 className="py-5 px-6 md:px-52 text-white w-full -mt-5">
+              {inputValue.prevQtn}
+            </h1>
+            {inputValue.answer == "" ? null : (
+              <Typewriter
+                text={inputValue.answer}
+                delay={10}
+                buttonsArray={inputValue.btns}
+                changeBtnStatus={changeBtnStatus}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

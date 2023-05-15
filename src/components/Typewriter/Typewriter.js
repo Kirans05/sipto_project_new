@@ -20,7 +20,7 @@ function Typewriter(props) {
   }, [index, props]);
 
   return (
-    <div className="bg-answerBoxBackground text-white py-10 px-6 md:px-52 w-full">
+    <div className="bg-answerBoxBackground text-white py-10 px-6 md:px-52 w-full ">
       <h1>{isDone ? text : text + "|"}</h1>
       {isDone == true ? (
         <div className="w-full md:w-full flex items-center justify-around md:justify-evenly mt-5 gap-x-2 flex-wrap">
