@@ -21,6 +21,7 @@ import {
 import { Line, Bar, Bubble, Scatter, Doughnut } from "react-chartjs-2";
 import supabase from "../../src/Config/supabaseClient";
 import { MainUseContext } from "../../src/context/MainUseContext";
+import AssestsModal from "../../src/components/Modal/AssestsModal";
 
 ChartJS.register(
   CategoryScale,
@@ -35,10 +36,14 @@ ChartJS.register(
 );
 
 const AssestsIndividual = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [user_data, setUser_data] = useState("");
+  const [assestsData, setAssestsData] = useState("");
   const coinId = useRouter().query.AssestsIndividual;
   const storeState = useContext(MainUseContext);
   let { individualAssestsContext } = storeState;
-  let {updateindividualAssestData, individualAssestData} = individualAssestsContext
+  let { updateindividualAssestData, individualAssestData } =
+    individualAssestsContext;
   const [optionSelected, setOptionSelected] = useState("overview");
   const chartRef = useRef();
 
@@ -168,44 +173,129 @@ const AssestsIndividual = () => {
         .from("new_assests_table")
         .select("*")
         .eq("id", coinId);
-        console.log(fetchResponse)
-  
+      console.log(fetchResponse);
+      setAssestsData(fetchResponse.data[0]);
       if (fetchResponse.status == 200) {
-        updateindividualAssestData(fetchResponse.data[0])
-            let filterXAxisValues = fetchResponse.data[0].graph_1W.returns.map((item) => {
-              return item.date.substring(0, 10);
-            });
-      
-            let filterYaxisStockValue = fetchResponse.data[0].graph_1W.returns.map(
-              (item) => {
-                return parseFloat(item.vest);
-              }
-            );
-      
-            let filterYaxisS_P_500Value = fetchResponse.data[0].graph_1W.returns.map(
-              (item) => {
-                return parseFloat(item["sp500"]);
-              }
-            );
-      
-            setChartOptions({
-              ...chartOptions,
-              xAxis: [{ ...chartOptions.xAxis[0], categories: filterXAxisValues }],
-              series: [
-                { ...chartOptions.series[0], data: filterYaxisStockValue },
-                { ...chartOptions.series[1], data: filterYaxisS_P_500Value },
-              ],
-            });
+        updateindividualAssestData(fetchResponse.data[0]);
+        let filterXAxisValues = fetchResponse.data[0].graph_1W.returns.map(
+          (item) => {
+            return item.date.substring(0, 10);
+          }
+        );
+
+        let filterYaxisStockValue = fetchResponse.data[0].graph_1W.returns.map(
+          (item) => {
+            return parseFloat(item.vest);
+          }
+        );
+
+        let filterYaxisS_P_500Value =
+          fetchResponse.data[0].graph_1W.returns.map((item) => {
+            return parseFloat(item["sp500"]);
+          });
+
+        setChartOptions({
+          ...chartOptions,
+          xAxis: [{ ...chartOptions.xAxis[0], categories: filterXAxisValues }],
+          series: [
+            { ...chartOptions.series[0], data: filterYaxisStockValue },
+            { ...chartOptions.series[1], data: filterYaxisS_P_500Value },
+          ],
+        });
       }
-  
-  
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchUserDetails = async (user) => {
+    try {
+      let fetchResponse = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+      setUser_data(fetchResponse.data);
+      localStorage.setItem("user_data", JSON.stringify(fetchResponse.data));
+    } catch (err) {}
+  };
+
+  const investHandler = async (totalPrice, qty) => {
+    if (user_data == "") {
+      return;
+    }
+
+    if(qty == 0){
+      alert("Please Select Quantity")
+      return
+    }
+
+    if (
+      user_data.wallet_balance < totalPrice ||
+      user_data.wallet_balance <= 0
+    ) {
+      alert("Not enough Balance to Purchase");
+      return;
+    }
+
+    try {
+      let balanceResponse = await supabase.rpc("decrement_balance", {
+        amount: Math.ceil(totalPrice),
+      });
+      console.log(balanceResponse)
+      if (balanceResponse.data == true) {
+        try {
+          let transactionResponse = await supabase.rpc(
+            "update_transaction_details",
+            {
+              id: user_data.id,
+              amount: Math.ceil(totalPrice),
+              sender: "kiran",
+              receiver: assestsData.name,
+              message: `${assestsData.name} purchase`,
+              type: "debit",
+              status:"success"
+            }
+          );
+          console.log(transactionResponse)
+          if (transactionResponse.data == true) {
+            try {
+              let coinTableResponse = await supabase.rpc("update_coins_table", {
+                userid: user_data.id,
+                coin_id: coinId,
+                purchase_price: Math.ceil(totalPrice),
+                purchase_unit: qty,
+              });
+              console.log(coinTableResponse)
+              if (coinTableResponse.data == true) {
+                alert("Coin SuccessFully Purchased");
+                closeModal()
+                return;
+              }
+            } catch (err) {}
+          }
+        } catch (err) {
+          console.log(err)
+        }
+      }
     } catch (err) {
       console.log(err)
     }
   };
 
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   useEffect(() => {
     fetchIndividualAssest();
+  }, []);
+
+  useEffect(() => {
+    const { user } = JSON.parse(
+      localStorage.getItem("sb-ziaxsvytbaahgjrompdd-auth-token")
+    );
+    fetchUserDetails(user);
   }, []);
 
   return (
@@ -214,7 +304,7 @@ const AssestsIndividual = () => {
       <div className="w-full">
         <Header />
         <div className="p-2 pt-6 md:p-6 flex flex-col md:flex-row w-full flex-wrap gap-x-10 gap-y-10 mb-12">
-        {individualAssestData.individualAssest == "" ? null : (
+          {individualAssestData.individualAssest == "" ? null : (
             <div className="flex flex-col gap-y-5 w-full">
               <div className="flex flex-col md:flex-row justify-between gap-y-4">
                 <div className="flex gap-x-3">
@@ -225,7 +315,9 @@ const AssestsIndividual = () => {
                     alt={"assest Image"}
                   />
                   <div>
-                    <h1 className="font-semibold">{individualAssestData.individualAssest.ticker}</h1>
+                    <h1 className="font-semibold">
+                      {individualAssestData.individualAssest.ticker}
+                    </h1>
                     <h1>{individualAssestData.individualAssest.name}</h1>
                   </div>
                 </div>
@@ -236,32 +328,37 @@ const AssestsIndividual = () => {
                   </div>
                   <h1
                     className={
-                      individualAssestData.individualAssest.change.toString().startsWith("-")
+                      individualAssestData.individualAssest.change
+                        .toString()
+                        .startsWith("-")
                         ? `text-red-500`
                         : `text-green-500`
                     }
                   >
-                    {individualAssestData.individualAssest.change} ({individualAssestData.individualAssest.changePercent}
+                    {individualAssestData.individualAssest.change} (
+                    {individualAssestData.individualAssest.changePercent}
                     %)
                   </h1>
                 </div>
               </div>
               <div className="flex gap-x-5">
-                {individualAssestData.individualAssest.tabs.map((item, index) => {
-                  return (
-                    <h1
-                      key={index}
-                      onClick={() => setOptionSelected(item)}
-                      className={
-                        optionSelected == item
-                          ? `border-b-2 border-slate-500 hover:cursor-pointer font-semibold`
-                          : `border-b-2 border-white hover:cursor-pointer font-semibold`
-                      }
-                    >
-                      {item.toUpperCase()}
-                    </h1>
-                  );
-                })}
+                {individualAssestData.individualAssest.tabs.map(
+                  (item, index) => {
+                    return (
+                      <h1
+                        key={index}
+                        onClick={() => setOptionSelected(item)}
+                        className={
+                          optionSelected == item
+                            ? `border-b-2 border-slate-500 hover:cursor-pointer font-semibold`
+                            : `border-b-2 border-white hover:cursor-pointer font-semibold`
+                        }
+                      >
+                        {item.toUpperCase()}
+                      </h1>
+                    );
+                  }
+                )}
               </div>
               {optionSelected == "overview" ? (
                 <div className="flex flex-col gap-y-4">
@@ -276,13 +373,20 @@ const AssestsIndividual = () => {
                   </div>
                   <div className="flex flex-col gap-y-4">
                     <h1 className="font-semibold">
-                      ABOUT {individualAssestData.individualAssest.name.toUpperCase()}
+                      ABOUT{" "}
+                      {individualAssestData.individualAssest.name.toUpperCase()}
                     </h1>
                     <h1>{individualAssestData.individualAssest.description}</h1>
                     <div className="flex flex-col">
                       <h1 className="font-semibold">52-WEEK RANGE</h1>
                       <div className="flex gap-x-5">
-                        <h1>${individualAssestData.individualAssest.summary[0].raw.low}</h1>
+                        <h1>
+                          $
+                          {
+                            individualAssestData.individualAssest.summary[0].raw
+                              .low
+                          }
+                        </h1>
                         {/* <Slider
                           defaultValue={99.11}
                           step={10}
@@ -291,43 +395,51 @@ const AssestsIndividual = () => {
                           max={99.11}
                           disabled
                         /> */}
-                         <h1>${individualAssestData.individualAssest.summary[0].raw.high}</h1>
+                        <h1>
+                          $
+                          {
+                            individualAssestData.individualAssest.summary[0].raw
+                              .high
+                          }
+                        </h1>
                       </div>
                     </div>
                     <div className="flex w-full md:w-1/2 justify-between">
-                      {individualAssestData.individualAssest.summary.map((item, index) => {
-                        if (index > 0) {
-                          return (
-                            <div key={index}>
-                              <h1 className="font-semibold">{item.label}</h1>
-                              <h1>{item.value}</h1>
-                            </div>
-                          );
+                      {individualAssestData.individualAssest.summary.map(
+                        (item, index) => {
+                          if (index > 0) {
+                            return (
+                              <div key={index}>
+                                <h1 className="font-semibold">{item.label}</h1>
+                                <h1>{item.value}</h1>
+                              </div>
+                            );
+                          }
                         }
-                      })}
+                      )}
                     </div>
-                  </div> 
-
-                   sector 
-                   <div className=" flex flex-col">
+                  </div>
+                  sector
+                  <div className=" flex flex-col">
                     <h1 className="font-semibold">SECTOR BREAKDOWN</h1>
                     <div className="w-full md:w-1/3 self-center h-80">
                       <Doughnut data={DognutData} options={DognutOptions} />
                     </div>
-                  </div> 
-
-                   largest holding 
-                   <div className="flex flex-col gap-y-3 w-full">
+                  </div>
+                  largest holding
+                  <div className="flex flex-col gap-y-3 w-full">
                     <h1 className="font-semibold">LARGEST HOLDINGS</h1>
                     <div className="flex flex-col gap-y-2">
-                      {individualAssestData.individualAssest.holdings.map((item, index) => {
-                        return (
-                          <div key={index} className="flex justify-between">
-                            <h1>{item.name}</h1>
-                            <h1>{item.assetsPercent}%</h1>
-                          </div>
-                        );
-                      })}
+                      {individualAssestData.individualAssest.holdings.map(
+                        (item, index) => {
+                          return (
+                            <div key={index} className="flex justify-between">
+                              <h1>{item.name}</h1>
+                              <h1>{item.assetsPercent}%</h1>
+                            </div>
+                          );
+                        }
+                      )}
                     </div>
                   </div>
                 </div>
@@ -361,15 +473,14 @@ const AssestsIndividual = () => {
                               </td>
                               <td align="center" className="border-2">
                                 {
-                                  individualAssestData.individualAssest.returns.current.value[
-                                    item.key
-                                  ].value
+                                  individualAssestData.individualAssest.returns
+                                    .current.value[item.key].value
                                 }
                               </td>
                               <td align="center" className="border-2">
                                 {
-                                  individualAssestData.individualAssest.returns.sp500.value[item.key]
-                                    .value
+                                  individualAssestData.individualAssest.returns
+                                    .sp500.value[item.key].value
                                 }
                               </td>
                             </tr>
@@ -380,13 +491,23 @@ const AssestsIndividual = () => {
                   </table>
                 </div>
               )}
-              <button className="bg-green-500 text-white w-full md:w-1/2 self-center fixed bottom-3 mt-4 h-8 rounded-2xl">
+              <button
+                className="bg-green-500 text-white w-full md:w-1/2 self-center fixed bottom-3 mt-4 h-8 rounded-2xl"
+                onClick={() => setShowModal(true)}
+              >
                 Invest Now
               </button>
-            </div> 
-           )}
+              {showModal == true ? (
+                <AssestsModal
+                  closeModal={closeModal}
+                  assestsData={assestsData}
+                  investHandler={investHandler}
+                />
+              ) : null}
+            </div>
+          )}
         </div>
-      </div> 
+      </div>
     </div>
   );
 };

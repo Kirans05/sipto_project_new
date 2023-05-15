@@ -70,7 +70,7 @@ const Drawer = ({ displayDrawer }) => {
 
         {/* dashboard, account, payment buttons */}
         <div className={userExist == true ? "flex flex-col gap-y-5" : "hidden"}>
-          <div
+          {/* <div
             className={
               router.pathname == "/Dashboard"
                 ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
@@ -141,7 +141,7 @@ const Drawer = ({ displayDrawer }) => {
           >
             <AiOutlineGold className="text-xl" />
             <h1 className="text-xl">Assests</h1>
-          </div>
+          </div> */}
           {/* <div
           className={
             router.pathname == "/SafeGold"
@@ -153,7 +153,7 @@ const Drawer = ({ displayDrawer }) => {
           <AiOutlineGold className="text-xl" />
           <h1 className="text-xl">SafeGold</h1>
         </div> */}
-          <div
+          {/* <div
             className={
               "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
             }
@@ -161,7 +161,162 @@ const Drawer = ({ displayDrawer }) => {
           >
             <FiLogOut />
             <h1 className="text-xl">Logout</h1>
-          </div>
+          </div> */}
+
+
+
+
+
+
+
+<div
+          className={
+            router.pathname == "/Dashboard"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/Dashboard")}
+        >
+          {/* <RxDashboard className="text-xl" /> */}
+          <h1 className="text-xl">Dashboard</h1>
+        </div>
+        <div
+          className={
+            router.pathname == "/Account"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/Account")}
+        >
+          {/* <VscAccount className="text-xl" /> */}
+          <h1 className="text-xl">Account</h1>
+        </div>
+        <div
+          className={
+            router.pathname == "/Transactions"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/Transactions")}
+        >
+          {/* <GrTransaction className={router.pathname == "/Transactions" ? "text-black" : "text-white bg-white"} /> */}
+          <h1 className="text-xl">Transactions</h1>
+        </div>
+        <div
+          className={
+            router.pathname == "/Withdraw"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/Withdraw")}
+        >
+          {/* <CiMoneyBill className="text-xl" /> */}
+          <h1 className="text-xl">Withdraw</h1>
+        </div>
+        <div
+          className={
+            router.pathname == "/Wallet"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/Wallet")}
+        >
+          {/* <BiWalletAlt className="text-xl" /> */}
+          <h1 className="text-xl">Wallet</h1>
+        </div>
+        <div
+          className={
+            router.pathname == "/Assests"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/Assests")}
+        >
+          {/* <AiOutlineGold className="text-xl" /> */}
+          <h1 className="text-xl">Assests</h1>
+        </div>
+        <div
+          className={
+            router.pathname == "/WebSdk"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/WebSdk")}
+        >
+          {/* <AiOutlineGold className="text-xl" /> */}
+          <h1 className="text-xl">Kyc</h1>
+        </div>
+        {/* <div
+          className={
+            router.pathname == "/RazorPay"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/RazorPay")}
+        > */}
+          {/* <AiOutlineGold className="text-xl" /> */}
+          {/* <h1 className="text-xl">RazorPay</h1>
+        </div> */}
+        {/* <div
+          className={
+            router.pathname == "/AugmontGold"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/AugmontGold")}
+        > */}
+          {/* <AiOutlineGold className="text-xl" /> */}
+          {/* <h1 className="text-xl">AugmontGold</h1>
+        </div> */}
+        {/* <div
+          className={
+            router.pathname == "/OpenApi"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/OpenApi")}
+        > */}
+          {/* <AiOutlineGold className="text-xl" /> */}
+          {/* <h1 className="text-xl">OpenApi</h1>
+        </div> */}
+        {/* <div
+          className={
+            router.pathname == "/MemoryLangchain"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/MemoryLangchain")}
+        > */}
+          {/* <AiOutlineGold className="text-xl" /> */}
+          {/* <h1 className="text-xl">MemoryLangchain</h1>
+        </div> */}
+        <div
+          className={
+            router.pathname == "/Pinecone"
+              ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
+              : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
+          }
+          onClick={() => router.push("/Pinecone")}
+        >
+          {/* <AiOutlineGold className="text-xl" /> */}
+          <h1 className="text-xl">Chat Bot</h1>
+        </div>
+        <div
+          className={
+            "text-white hover:cursor-pointer p-1 flex items-center gap-x-2 mb-6"
+          }
+          onClick={() => logoutHandler()}
+        >
+          {/* <FiLogOut  /> */}
+          <h1 className="text-xl">Logout</h1>
+        </div>
+
+
+
+
+
+
+
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../src/components/Header/Header";
 import Sidebar from "../src/components/Sidebar/Sidebar";
 import AssestsComponent from "../src/components/ListOfAssests/AssestsComponent";
@@ -7,6 +7,8 @@ import { MainUseContext } from "../src/context/MainUseContext";
 import BasketComponent from "../src/components/ListOfAssests/BasketComponent";
 
 const LIstOfAssests = () => {
+  const [assestsList, setAssestsList] = useState([]);
+  const [basketLIst, setBasketList] = useState([]);
   const storeState = useContext(MainUseContext);
   console.log(storeState);
   let { listOfAssestsContext, userDetailsContext } = storeState;
@@ -24,7 +26,8 @@ const LIstOfAssests = () => {
       }
 
       if (fetchResponse.data) {
-        updateListOfAssestsArray(fetchResponse.data);
+        // updateListOfAssestsArray(fetchResponse.data);
+        setAssestsList(fetchResponse.data);
       }
     } catch (err) {}
   };
@@ -38,7 +41,8 @@ const LIstOfAssests = () => {
       }
 
       if (fetchResponse.status == 200) {
-        updateListOfBasketsArray(fetchResponse.data);
+        // updateListOfBasketsArray(fetchResponse.data);
+        setBasketList(fetchResponse.data);
       }
     } catch (err) {}
   };
@@ -60,17 +64,23 @@ const LIstOfAssests = () => {
           <div className="w-full flex flex-col gap-y-4 items-center">
             <h1 className="font-semibold">List Of Assests</h1>
             <div className="w-full flex flex-col gap-y-4 items-center">
-              {listOfAssestsData.listOfAssestsArray.map((item, index) => {
+              {assestsList.map((item, index) => {
                 return <AssestsComponent key={index} item={item} />;
               })}
+              {/* {listOfAssestsData.listOfAssestsArray.map((item, index) => {
+                return <AssestsComponent key={index} item={item} />;
+              })} */}
             </div>
           </div>
           <div className="w-full flex flex-col gap-y-4 items-center">
             <h1 className="font-semibold">List of Baskets</h1>
             <div className="flex flex-col md:flex-row flex-wrap gap-x-2 justify-around gap-y-5">
-              {listOfAssestsData.listOfBasketsArray.map((item, index) => {
+              {basketLIst.map((item, index) => {
                 return <BasketComponent key={index} item={item} />;
               })}
+              {/* {listOfAssestsData.listOfBasketsArray.map((item, index) => {
+                return <BasketComponent key={index} item={item} />;
+              })} */}
             </div>
           </div>
         </div>
