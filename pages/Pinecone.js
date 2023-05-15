@@ -137,6 +137,12 @@ const Pinecone = () => {
               onKeyUp={inputChangeHandler}
             />
             <button
+              onClick={() => getResult(inputValue.value)}
+              className="bg-green-500 p-2 text-white "
+            >
+              {`>`}
+            </button>
+            <button
               onClick={resetAnswer}
               className="bg-red-500 p-2 text-white "
             >
