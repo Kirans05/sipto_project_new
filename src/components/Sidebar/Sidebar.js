@@ -145,17 +145,17 @@ const Sidebar = () => {
           {/* <AiOutlineGold className="text-xl" /> */}
           {/* <h1 className="text-xl">RazorPay</h1>
         </div> */}
-        <div
+        {/* <div
           className={
             router.pathname == "/AugmontGold"
               ? "text-black hover:cursor-pointer bg-gray-400  rounded-lg p-1 flex items-center gap-x-2"
               : "text-white hover:cursor-pointer p-1 flex items-center gap-x-2"
           }
           onClick={() => router.push("/AugmontGold")}
-        >
+        > */}
           {/* <AiOutlineGold className="text-xl" /> */}
-          <h1 className="text-xl">AugmontGold</h1>
-        </div>
+          {/* <h1 className="text-xl">AugmontGold</h1>
+        </div> */}
         {/* <div
           className={
             router.pathname == "/OpenApi"
