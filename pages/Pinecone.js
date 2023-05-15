@@ -125,7 +125,7 @@ const Pinecone = () => {
           className="py-4 w-full flex flex-col items-start gap-y-3
         bg-backgroundGray h-screen"
         >
-          <div className="self-center fixed bottom-8 flex items-center gap-x-3 w-full justify-center">
+          <div className="self-center fixed bottom-8 flex items-center gap-x-1 w-full justify-center">
             <input
               type="text"
               placeholder="Enter Question"
