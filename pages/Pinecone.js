@@ -117,12 +117,12 @@ const Pinecone = () => {
   }, []);
 
   return (
-    <div className="w-full flex flex-row">
+    <div className="w-[100%] flex flex-row">
       <Sidebar />
-      <div className="w-full flex flex-col gap-y-10">
+      <div className="w-[100%] md:w-[80%] flex flex-col gap-y-10">
         {/* <Header /> */}
         <div
-          className="py-4 w-full flex flex-col items-start gap-y-3
+          className="py-4 w-[100%] flex flex-col items-start gap-y-3
         bg-backgroundGray h-screen"
         >
           <div className="self-center fixed bottom-8 flex items-center gap-x-1 w-full justify-center">
@@ -149,21 +149,21 @@ const Pinecone = () => {
               Reset
             </button>
           </div>
-          <div className="text-white fixed flex flex-row px-10 py-4 bottom-20 md:bottom-24 self-center w-full md:w-3/4 justify-between md:justify-evenly">
+          <div className="text-white fixed flex flex-row px-2 md:px-10 py-4 bottom-20 md:bottom-24  min-w-[100%] max-w-[100%] md:min-w-[70%] md:max-w-[70%] self-center justify-start md:justify-evenly overflow-x-auto gap-x-3">
             <h1
-              className="hover:cursor-pointer hover:underline"
+              className="hover:cursor-pointer border-2 border-white  md:px-2 md:py-2 rounded-xl min-w-[60%] max-w-[60%] h-10 md:min-w-[30%] md:max-w-[30%] text-center flex justify-center items-center"
               onClick={() => getResult("How do I invest in gold?")}
             >
               How do I invest in gold?
             </h1>
             <h1
-              className="hover:cursor-pointer hover:underline"
+              className="hover:cursor-pointer border-2 border-white  md:px-2 md:py-2 rounded-xl min-w-[60%] max-w-[60%] h-10 md:min-w-[30%] md:max-w-[30%] text-center flex justify-center items-center"
               onClick={() => getResult("How do I add funds?")}
             >
               How do I add funds?
             </h1>
             <h1
-              className="hover:cursor-pointer hover:underline"
+              className="hover:cursor-pointer border-2 border-white  md:px-2 md:py-2 rounded-xl min-w-[60%] max-w-[60%] h-10 md:min-w-[30%] md:max-w-[30%] text-center flex justify-center items-center"
               onClick={() => getResult("Why should I do KYC?")}
             >
               Why should I do KYC?

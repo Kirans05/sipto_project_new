@@ -27,7 +27,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="hidden md:flex  pl-4 pr-2 pt-5  flex-col justify-start  w-1/5 h-screen gap-y-5  bg-sidebarBakground sticky top-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-slate-400">
+    <div className="hidden md:flex  pl-4 pr-2 pt-5  flex-col justify-start  w-[20%] h-screen gap-y-5  bg-sidebarBakground sticky top-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-slate-400">
       {/* app name */}
       <h1 className="text-3xl text-white hover:cursor-pointer">Sipto</h1>
 
